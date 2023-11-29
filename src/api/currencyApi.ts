@@ -14,10 +14,6 @@ export const fetchExchangeRates = async (
       `https://api.getgeoapi.com/v2/currency/convert?api_key=${CURRENCY_API_KEY}&from=${curency2}&to=UAH&format=json`
     );
     const dollarData = await dollarRes.json();
-    console.log({
-      dollarRate: dollarData.rates.UAH.rate,
-      euroRate: euroData.rates.UAH.rate,
-    });
     return {
       dollarRate: dollarData.rates.UAH.rate,
       euroRate: euroData.rates.UAH.rate,

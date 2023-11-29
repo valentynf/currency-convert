@@ -1,12 +1,11 @@
 @font-face {
-  font-family: 'Digital';
-  font-style: normal;
-  src: url('public/fonts/DigitalDisplayRegular-ODEO.ttf') format('truetype');
+  font-family: 'ClassicMini';
+  src: url('public/fonts/DSEG7ClassicMini-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'SevenSegment';
-  src: url('public/fonts/SevenSegment.ttf') format('truetype');
+  font-family: 'RobotoSlab';
+  src: url('public/fonts/RobotoSlab-Light.ttf') format('truetype');
 }
 
 body {

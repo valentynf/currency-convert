@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Digital';
+  font-style: normal;
+  src: url('public/fonts/DigitalDisplayRegular-ODEO.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SevenSegment';
+  src: url('public/fonts/SevenSegment.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+}

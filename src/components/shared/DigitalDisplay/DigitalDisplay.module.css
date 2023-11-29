@@ -1,0 +1,13 @@
+.digital-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 128px;
+  background-color: black;
+  border-radius: 4px;
+  font-family: 'SevenSegment', sans-serif;
+  font-size: 64px;
+  color: #ea2b1f;
+  /* color: #bb342f; */
+}

@@ -6,7 +6,7 @@ Live Demo: [Обмін валют](https://obmin-valiut.netlify.app/)
 
 ## Getting Started
 
-To get started with GeoPair, follow these steps:
+To get started, follow these steps:
 
 1. Clone the repository to your local machine:
 

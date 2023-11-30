@@ -10,7 +10,8 @@ export const fetchExchangeRate = async (
       `${CURRENCY_API_URL}?api_key=${CURRENCY_API_KEY}&from=${curencyFrom}&to=${curencyTo}&format=json`
     );
     const data = await response.json();
-    return data.rates[curencyTo].rate;
+    const rate = parseFloat(data.rates[curencyTo].rate).toFixed(3);
+    return rate;
   } catch (err) {
     console.error(`Couldn't fetch exchange rates`, err);
     throw err;

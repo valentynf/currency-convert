@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Currency } from '../../types/appTypes';
 import styles from './CurrencyConverter.module.css';
+import useExchangeRates from '../../hooks/useExchangeRates';
 
 function CurrencyConverter() {
   const [firstCurrency, setFirstCurrency] = useState<Currency>('UAH');
   const [secondCurrency, setSecondCurrency] = useState<Currency>('EUR');
   const [firstAmount, setFirstAmount] = useState<string>('1');
-  const [secondAmount, setSecondAmount] = useState<string>('1');
+  const [secondAmount, setSecondAmount] = useState<string>('loading');
+
+  const { ratesData } = useExchangeRates(firstCurrency, secondCurrency);
 
   const handleChangeFirstCurrency = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -21,20 +24,26 @@ function CurrencyConverter() {
   };
 
   const handleChangeFirstAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFirstAmount(e.target.value);
+    const newValue = e.target.value;
+    setFirstAmount(newValue);
+    setSecondAmount(() => (Number(newValue) * Number(ratesData)).toFixed(3));
   };
 
   const handleChangeSecondAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSecondAmount(e.target.value);
+    const newValue = e.target.value;
+    setSecondAmount(newValue);
+    setFirstAmount(() => (Number(newValue) / Number(ratesData)).toFixed(3));
   };
 
   return (
     <div className={styles['converter-background']}>
       <div className={styles['converter-container']}>
         <span className={styles['currency-from']}>
-          1 Ukrainian hryvnia equals
+          1 {firstCurrency} equals
         </span>
-        <span className={styles['result']}>0.025 Euro</span>
+        <span className={styles['result']}>
+          {ratesData} {secondCurrency}
+        </span>
         <div className={styles['input']}>
           <div className={styles['currency-container']}>
             <input

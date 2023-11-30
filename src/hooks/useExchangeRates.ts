@@ -3,7 +3,7 @@ import { fetchExchangeRate } from '../api/currencyApi';
 import { Currency } from '../types/appTypes';
 
 function useExchangeRates(curencyFrom: Currency, currencyTo: Currency) {
-  const [ratesData, setRatesData] = useState<string>('');
+  const [ratesData, setRatesData] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ function useExchangeRates(curencyFrom: Currency, currencyTo: Currency) {
         setIsLoading(true);
         const rateData = await fetchExchangeRate(curencyFrom, currencyTo);
         if (rateData) {
-          setRatesData(rateData);
+          setRatesData(parseFloat(rateData));
         }
       } catch (err) {
         console.error(`Couldn't fetch exchange rates`, err);

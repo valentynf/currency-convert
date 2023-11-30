@@ -1,23 +1,18 @@
 import { useEffect, useState } from 'react';
-import { fetchExchangeRates } from '../api/currencyApi';
-import { RatesData } from '../types/appTypes';
+import { fetchExchangeRate } from '../api/currencyApi';
+import { Currency } from '../types/appTypes';
 
-const initialState: RatesData = {
-  dollarRate: '0',
-  euroRate: '0',
-};
-
-function useExchangeRates() {
-  const [ratesData, setRatesData] = useState<RatesData>(initialState);
+function useExchangeRates(curencyFrom: Currency, currencyTo: Currency) {
+  const [ratesData, setRatesData] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchRatesData = async () => {
       try {
         setIsLoading(true);
-        const ratesData = await fetchExchangeRates('EUR', 'USD');
-        if (ratesData) {
-          setRatesData(ratesData);
+        const rateData = await fetchExchangeRate(curencyFrom, currencyTo);
+        if (rateData) {
+          setRatesData(rateData);
         }
       } catch (err) {
         console.error(`Couldn't fetch exchange rates`, err);
@@ -26,7 +21,7 @@ function useExchangeRates() {
       }
     };
     fetchRatesData();
-  }, []);
+  }, [curencyFrom, currencyTo]);
 
   return { ratesData, isLoading };
 }

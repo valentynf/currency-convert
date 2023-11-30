@@ -5,7 +5,8 @@ import styles from './CurrencyConverter.module.css';
 function CurrencyConverter() {
   const [firstCurrency, setFirstCurrency] = useState<Currency>('UAH');
   const [secondCurrency, setSecondCurrency] = useState<Currency>('EUR');
-  // const [amount, setAmount] = useState<number>(1);
+  const [firstAmount, setFirstAmount] = useState<string>('1');
+  const [secondAmount, setSecondAmount] = useState<string>('1');
 
   const handleChangeFirstCurrency = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -19,6 +20,14 @@ function CurrencyConverter() {
     setSecondCurrency(e.target.value as Currency);
   };
 
+  const handleChangeFirstAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFirstAmount(e.target.value);
+  };
+
+  const handleChangeSecondAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSecondAmount(e.target.value);
+  };
+
   return (
     <div className={styles['converter-background']}>
       <div className={styles['converter-container']}>
@@ -28,26 +37,36 @@ function CurrencyConverter() {
         <span className={styles['result']}>0.025 Euro</span>
         <div className={styles['input']}>
           <div className={styles['currency-container']}>
-            <input className={styles['currency-amount']} type="text" />
+            <input
+              value={firstAmount}
+              onChange={handleChangeFirstAmount}
+              className={styles['currency-amount']}
+              type="text"
+            />
             <select
               className={styles['currency-dropdown']}
               value={firstCurrency}
               onChange={handleChangeFirstCurrency}
             >
-              <option value="USD">Ukrainian hryvnia</option>
-              <option value="UAH">US Dollar</option>
+              <option value="UAH">Ukrainian hryvnia</option>
+              <option value="USD">US Dollar</option>
               <option value="EUR">Euro</option>
             </select>
           </div>
           <div className={styles['currency-container']}>
-            <input className={styles['currency-amount']} type="text" />
+            <input
+              value={secondAmount}
+              onChange={handleChangeSecondAmount}
+              className={styles['currency-amount']}
+              type="text"
+            />
             <select
               className={styles['currency-dropdown']}
               value={secondCurrency}
               onChange={handleChangeSecondFirstCurrency}
             >
-              <option value="USD">Ukrainian hryvnia</option>
-              <option value="UAH">US Dollar</option>
+              <option value="UAH">Ukrainian hryvnia</option>
+              <option value="USD">US Dollar</option>
               <option value="EUR">Euro</option>
             </select>
           </div>

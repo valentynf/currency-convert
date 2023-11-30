@@ -2,4 +2,34 @@
 
 Simple currency converter app
 
-Live Demo: [Обмін валют]([url](https://obmin-valiut.netlify.app/)https://obmin-valiut.netlify.app/)
+Live Demo: [Обмін валют](https://obmin-valiut.netlify.app/)
+
+## Getting Started
+
+To get started with GeoPair, follow these steps:
+
+1. Clone the repository to your local machine:
+
+```shell
+git clone https://github.com/valentynf/currency-convert
+```
+
+2. Navigate to the project directory:
+
+```shell
+cd currency-convert
+```
+
+3. Install the project dependencies:
+
+```shell
+npm i
+```
+
+4. Start development server:
+
+```shell
+npm run dev
+```
+
+This will launch the app in your default web browser.

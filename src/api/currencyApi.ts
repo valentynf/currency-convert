@@ -5,36 +5,16 @@ export const fetchExchangeRate = async (
   curencyFrom: Currency,
   curencyTo: Currency
 ): Promise<string | undefined> => {
+  if (curencyFrom === curencyTo) return '1';
   try {
     const response = await fetch(
       `${CURRENCY_API_URL}?api_key=${CURRENCY_API_KEY}&from=${curencyFrom}&to=${curencyTo}&format=json`
     );
     const data = await response.json();
-    const rate = parseFloat(data.rates[curencyTo].rate).toFixed(3);
+    const rate = data.rates[curencyTo].rate;
     return rate;
   } catch (err) {
     console.error(`Couldn't fetch exchange rates`, err);
     throw err;
   }
 };
-
-// export const fetchExchangeAmount = async (
-//   curencyFrom: Currency,
-//   curencyTo: Currency,
-//   amount: string,
-//   ac: AbortController
-// ) => {
-//   try {
-//     const signal = ac.signal;
-//     const response = await fetch(
-//       `${CURRENCY_API_URL}?api_key=${CURRENCY_API_KEY}&from=${curencyFrom}&to=${curencyTo}&amount=${amount}&format=json`,
-//       { signal }
-//     );
-//     const data = await response.json();
-//     const res = data.rates[curencyTo].rate_for_amount;
-//     return res;
-//   } catch (err) {
-//     console.log(`Couldn't convert to ${curencyTo}`, err);
-//     throw err;
-//   }
-// };

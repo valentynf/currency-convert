@@ -1,0 +1,17 @@
+.header-container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  height: 200px;
+  width: 100%;
+  background-color: #fad20e;
+  padding: 32px 144px;
+}
+
+.title {
+  font-family: 'RobotoSlab';
+  font-size: 64px;
+  min-width: 480px;
+}

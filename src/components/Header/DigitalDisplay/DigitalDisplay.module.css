@@ -1,0 +1,32 @@
+.display-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.digital-display {
+  width: 180px;
+  position: relative;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  background-color: black;
+  border-radius: 4px;
+  font-family: 'ClassicMini';
+  font-size: 56px;
+  color: #b13330;
+  z-index: 1;
+}
+
+.back-leds {
+  position: absolute;
+  color: rgba(187, 52, 47, 0.3);
+}
+
+.rates-info {
+  font-family: 'RobotoSlab';
+  font-size: 24px;
+}

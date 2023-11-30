@@ -1,0 +1,70 @@
+.converter-background {
+  width: 100%;
+  height: calc(100vh - 200px);
+  background-color: #1e1a1d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  margin-top: 4px;
+}
+
+.converter-container {
+  box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 240px;
+  background-color: #fad20e;
+  font-family: 'RobotoSlab';
+  border-radius: 4px;
+}
+
+.currency-container {
+  background-color: none;
+  padding: 2px;
+  margin-top: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.currency-container:focus-within {
+  border-color: #b13330;
+  box-shadow: 0 0 10px rgba(187, 52, 47, 0.3);
+}
+
+.currency-dropdown {
+  padding-left: 4px;
+  height: 40px;
+  width: 168px;
+  font-family: 'RobotoSlab';
+  font-size: 16px;
+  border: none;
+  background: transparent;
+}
+
+.currency-amount:focus,
+.currency-dropdown:focus {
+  outline: none;
+}
+
+.currency-amount {
+  padding-left: 8px;
+  height: 40px;
+  font-family: 'RobotoSlab';
+  font-size: 16px;
+  border: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  background: transparent;
+}
+
+.currency-from {
+  font-size: 16px;
+}
+
+.result {
+  font-size: 32px;
+  padding: 16px 0px;
+}

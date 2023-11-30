@@ -1,14 +1,14 @@
 .converter-background {
   width: 100%;
   height: calc(100vh - 200px);
-  background-color: #f2f5ff;
+  background-color: #1e1a1d;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .input {
-  margin-top: 16px;
+  margin-top: 4px;
 }
 
 .converter-container {
@@ -17,8 +17,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 420px;
-  height: 250px;
+  height: 240px;
   background-color: #fad20e;
   font-family: 'RobotoSlab';
   border-radius: 4px;
@@ -39,6 +38,7 @@
 .currency-dropdown {
   padding-left: 4px;
   height: 40px;
+  width: 168px;
   font-family: 'RobotoSlab';
   font-size: 16px;
   border: none;
@@ -51,7 +51,7 @@
 }
 
 .currency-amount {
-  padding-left: 4px;
+  padding-left: 8px;
   height: 40px;
   font-family: 'RobotoSlab';
   font-size: 16px;

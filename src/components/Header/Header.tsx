@@ -1,5 +1,5 @@
 import useExchangeRates from '../../hooks/useExchangeRates';
-import DigitalDisplay from '../shared/DigitalDisplay/DigitalDisplay';
+import DigitalDisplay from './DigitalDisplay/DigitalDisplay';
 import styles from './Header.module.css';
 
 function Header() {

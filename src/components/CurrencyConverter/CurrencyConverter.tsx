@@ -1,27 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Currency } from '../../types/appTypes';
 import styles from './CurrencyConverter.module.css';
 import useExchangeRates from '../../hooks/useExchangeRates';
+import { currencyOptions } from '../../config';
 
 function CurrencyConverter() {
   const [firstCurrency, setFirstCurrency] = useState<Currency>('UAH');
   const [secondCurrency, setSecondCurrency] = useState<Currency>('EUR');
-  const [firstAmount, setFirstAmount] = useState<string>('0');
+  const [firstAmount, setFirstAmount] = useState<string>('1');
   const [secondAmount, setSecondAmount] = useState<string>('0');
+  const [lastChangedInput, setLastChangedInput] = useState<'first' | 'second'>(
+    'first'
+  );
 
   const { ratesData } = useExchangeRates(firstCurrency, secondCurrency);
-
-  const currencyOptions = {
-    UAH: 'Ukrainian hryvnia',
-    USD: 'US Dollar',
-    EUR: 'Euro',
-  };
 
   const options = Object.entries(currencyOptions).map(([value, label]) => (
     <option key={value} value={value}>
       {label}
     </option>
   ));
+
+  useEffect(() => {
+    if (lastChangedInput === 'first') {
+      setSecondAmount((Number(firstAmount) * Number(ratesData)).toFixed(3));
+    }
+    if (lastChangedInput === 'second') {
+      setFirstAmount((Number(secondAmount) / Number(ratesData)).toFixed(3));
+    }
+  }, [
+    ratesData,
+    firstAmount,
+    secondAmount,
+    firstCurrency,
+    secondCurrency,
+    lastChangedInput,
+  ]);
 
   const handleChangeFirstCurrency = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -38,13 +52,13 @@ function CurrencyConverter() {
   const handleChangeFirstAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setFirstAmount(newValue);
-    setSecondAmount(() => (Number(newValue) * Number(ratesData)).toFixed(3));
+    setLastChangedInput('first');
   };
 
   const handleChangeSecondAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setSecondAmount(newValue);
-    setFirstAmount(() => (Number(newValue) / Number(ratesData)).toFixed(3));
+    setLastChangedInput('second');
   };
 
   return (

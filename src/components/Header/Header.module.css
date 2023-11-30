@@ -2,7 +2,8 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10%;
   height: 200px;
   width: 100%;
   background-color: #fad20e;

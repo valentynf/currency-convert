@@ -28,14 +28,7 @@ function CurrencyConverter() {
     if (lastChangedInput === 'second') {
       setFirstAmount((Number(secondAmount) / Number(ratesData)).toFixed(3));
     }
-  }, [
-    ratesData,
-    firstAmount,
-    secondAmount,
-    firstCurrency,
-    secondCurrency,
-    lastChangedInput,
-  ]);
+  }, [ratesData, firstAmount, secondAmount, lastChangedInput]);
 
   const handleChangeFirstCurrency = (
     e: React.ChangeEvent<HTMLSelectElement>
